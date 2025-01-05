@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400');
+
+.light {
+  --text: 237, 242, 247;
+  --text-dim: 189, 189, 189;
+
+  --background: 8, 14, 17;
+
+  --surface-main: 23, 105, 186;
+  --surface-secondary: 27, 66, 105;
+
+  --primary: 23, 105, 186;
+  --secondary: 27, 66, 105;
+  --accent: 107, 151, 230;
+
+  --border: 13, 27, 38;
+
+  background-color: rgba(var(--background));
+  color: rgba(var(--text));
+}
+
+.dark {
+  --text: 237, 242, 247;
+  --text-dim: 189, 189, 189;
+
+  --background: 8, 14, 17;
+
+  --surface-main: 23, 105, 186;
+  --surface-secondary: 27, 66, 105;
+
+  --primary: 23, 105, 186;
+  --secondary: 27, 66, 105;
+  --accent: 107, 151, 230;
+
+  --border: 13, 27, 38;
+
+  background-color: rgba(var(--background));
+  color: rgba(var(--text));
+}
+
