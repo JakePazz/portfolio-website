@@ -1,18 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-@import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400');
 
 .light {
   --text: 237, 242, 247;
   --text-dim: 189, 189, 189;
 
   --background: 8, 14, 17;
-
-  --surface-main: 23, 105, 186;
-  --surface-secondary: 27, 66, 105;
 
   --primary: 23, 105, 186;
   --secondary: 27, 66, 105;
