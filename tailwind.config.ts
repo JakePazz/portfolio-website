@@ -6,28 +6,29 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				text: "rgba(var(--text)))",
-				textDim: "rgba(var(--text-dim)))",
+				text: "rgba(var(--text))",
+				textDim: "rgba(var(--text-dim))",
 				
-				background: "rgba(var(--background)))",
+				background: "rgba(var(--background))",
 				
-				surfaceMain: "rgba(var(--surface-main)))",
-				surfaceSecondary: "rgba(var(--surface-secondary)))",
+				surfaceMain: "rgba(var(--surface-main))",
+				surfaceSecondary: "rgba(var(--surface-secondary))",
 	
-				primary: "rgba(var(--primary)))",
-				secondary: "rgba(var(--secondary)))",
-				accent: "rgba(var(--accent)))",
+				primary: "rgba(var(--primary))",
+				secondary: "rgba(var(--secondary))",
+				accent: "rgba(var(--accent))",
 	
-				border: "rgba(var(--border)))",
+				border: "rgba(var(--border))",
 			},			
 			fontSize: {
 				sm: '0.750rem',
 				base: '1rem',
-				xl: '1.333rem',
-				'2xl': '1.777rem',
-				'3xl': '2.369rem',
-				'4xl': '3.158rem',
-				'5xl': '4.210rem',
+				xl: '1.25rem',
+				'2xl': '1.563rem',
+				'3xl': '1.938rem',
+				'4xl': '2.438rem',
+				'5xl': '3.063rem',
+				'6xl': '3.813rem',
 			},
 			fontFamily: {
 				'sans': ['poppins', "ui-sans-serif", "sans-serif"],
