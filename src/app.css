@@ -26,9 +26,6 @@
 
   --background: 8, 14, 17;
 
-  --surface-main: 23, 105, 186;
-  --surface-secondary: 27, 66, 105;
-
   --primary: 23, 105, 186;
   --secondary: 27, 66, 105;
   --accent: 107, 151, 230;
@@ -37,5 +34,19 @@
 
   background-color: rgba(var(--background));
   color: rgba(var(--text));
+
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--secondary));
+  border-radius: 10px;
+}
