@@ -21,7 +21,7 @@ export default {
 				border: "rgba(var(--border))",
 			},			
 			fontSize: {
-				sm: '0.750rem',
+				sm: '0.90rem',
 				base: '1rem',
 				xl: '1.25rem',
 				'2xl': '1.563rem',
@@ -37,6 +37,15 @@ export default {
 				normal: '400',
 				bold: '700',
 			},
+			keyframes: {
+				takeoff: {
+					"100%": { transform: "translateX(2rem) translateY(-1rem)" },
+					"80%, 100%": { opacity: "0"}
+				}
+			},
+			animation: {
+				takeoff: "takeoff 3s ease-out 1 forwards"
+			}
 		},
 
 	},
