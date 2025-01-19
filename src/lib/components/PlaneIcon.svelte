@@ -1,8 +1,3 @@
-<script lang="ts">
-
-
-</script>
-
 <span class="inline-flex flex-col justify-center gap-0.5">
 
   <span class="hover:animate-takeoff">
