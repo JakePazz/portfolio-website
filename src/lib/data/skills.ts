@@ -31,7 +31,6 @@ export const knownSkills: Tskill[] = [
     deviconName: "devicon-git-plain colored",
     link: "https://git-scm.com/"
   }
-
 ]
 
 export const learningSkills: Tskill[] = [

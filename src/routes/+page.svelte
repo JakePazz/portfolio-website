@@ -1,11 +1,14 @@
 <script lang="ts">
 	import Container from "$lib/components/Container.svelte";
 	import Button from "$lib/components/Button.svelte";
-  import { ArrowDown01Icon, Github01Icon, LibraryIcon, Linkedin01Icon, MailAtSign01Icon, Mortarboard02Icon } from "hugeicons-svelte";
+  import { ArrowDown01Icon, ArrowLeft01Icon, ArrowRight01Icon, Github01Icon, LibraryIcon, Linkedin01Icon, MailAtSign01Icon, Mortarboard02Icon } from "hugeicons-svelte";
 	import PlaneIcon from "$lib/components/PlaneIcon.svelte";
 	import Skill from "$lib/components/Skill.svelte";
   import { knownSkills, learningSkills } from "$lib/data/skills"
   import { personalInformation } from "$lib/data/personalInformation"
+  import { experiences } from "$lib/data/experiences"
+	import Experience from "$lib/components/timeline/Experience.svelte";
+	import type { Texperience } from "$lib/types/experience";
 
   function copyEmail() {
     navigator.clipboard.writeText(personalInformation.email)
@@ -15,9 +18,42 @@
     window.open(link, "_blank")
   }
 
+  let timelineContainer: HTMLDivElement
+
+  // Timeline left/right button
+  function scrollLeft() {
+    timelineContainer.scrollBy({ left: -650, behavior: "smooth" })
+  }
+
+  function scrollRight() {
+    timelineContainer.scrollBy({ left: 650, behavior: "smooth" })
+  }
+
+  // Timeline click and drag horizontal scroll
+  let isDown = false;
+  let startX: number;
+  let scrollingLeft: number;
+
+  function handleMouseDown(event: MouseEvent) {
+    isDown = true;
+
+    startX = event.pageX - timelineContainer.offsetLeft;
+    scrollingLeft = timelineContainer.scrollLeft;
+  }
+
+  function handleMouseMove(event: MouseEvent) {
+    if (!isDown) return
+    
+    event.preventDefault()
+
+    const x = event.pageX - timelineContainer.offsetLeft
+    const walk = (x - startX) * 1
+    timelineContainer.scrollLeft = scrollingLeft - walk
+  }
+
 </script>
 
-<div class="h-[calc(100dvh-4rem)] w-full pt-6 flex flex-col gap-4">
+<section class="h-[calc(100dvh-4rem)] w-full pt-6 flex flex-col gap-4">
 
   <div class="pt-44 pb-6 flex-1 flex justify-start items-start flex-col gap-20">
     
@@ -36,9 +72,9 @@
       <ArrowDown01Icon color="rgba(var(--accent))" size={30}/>
     </div>
   </div>
-</div>
+</section>
 
-<div class="flex justify-center gap-12 w-full">
+<section class="flex justify-center gap-12 w-full mt-16 mb-28">
   <div class="w-1/2">
     <Container>
       <p class="pb-8 text-textDim">My name is Jake Pazzard and I am a student from the UK.</p>
@@ -62,4 +98,70 @@
       {/each}
     </div>
   </div>
+</section>
+
+<section class="flex flex-col gap-12 w-full mb-28 ">
+  <div class="flex justify-between items-center">
+    <h3 class="text-3xl font-medium">Timeline</h3>
+    <div class="inline-flex gap-2 items-center">
+      <Button onclick={scrollLeft}><ArrowLeft01Icon color="rgba(var(--accent))" size={30}/></Button>
+      <Button onclick={scrollRight}><ArrowRight01Icon color="rgba(var(--accent))" size={30}/></Button>
+    </div>  
+  </div>
+  <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+  <div
+  bind:this={timelineContainer}
+  class="flex w-full select-none overflow-x-scroll pb-16 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] cursor-grab"
+  onmousedown={handleMouseDown}
+  onmouseleave={() => {
+    isDown = false
+  }}
+  onmouseup={() => {
+    isDown = false
+  }}
+  onmousemove={handleMouseMove}
+  role="list"
+  >
+    {#each experiences as experience, index}
+      {@render timelineSection(experience, index)}
+    {/each}
+  </div>
+</section>
+
+<section>
+  <h3 class="text-3xl font-medium">Projects</h3>
+
+</section>
+
+<!-- Snippets -->
+
+{#snippet timelineSection(experience: Texperience, index: number)}
+<div class="h-full flex flex-col">
+  <div class="px-6">
+    <Experience {experience} />
+  </div>
+
+  <!-- Timeline line -->
+  <div class="flex w-full items-end">
+    <!-- Line -->
+    <div class="bg-secondary/60 h-1 flex-1 mb-1 {index === 0 ? 'rounded-l-full' : ''}"></div>
+
+    <!-- Marker and vertical line -->
+    <div class="flex flex-col items-center">
+      <div class="bg-secondary h-8 w-1"></div>
+      <div class="bg-secondary h-3 w-3 rounded-full"></div>
+    </div>
+
+    <!-- Line -->
+    <div class="bg-secondary/60 h-1 flex-[2] mb-1 {index === experiences.length - 1 ? 'rounded-r-full' : ''}"></div>
+  </div>
+  
 </div>
+{/snippet}
+
+<style>
+  .active {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+  }
+</style>
