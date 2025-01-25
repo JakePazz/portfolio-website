@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400');
+@import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400|Poppins:500');
 
 @tailwind base;
 @tailwind components;
@@ -49,4 +49,8 @@
 ::-webkit-scrollbar-thumb {
   background-color: rgba(var(--secondary));
   border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(var(--primary));
 }
