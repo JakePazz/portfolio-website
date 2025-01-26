@@ -9,7 +9,9 @@
   import { experiences } from "$lib/data/experiences"
 	import Experience from "$lib/components/timeline/Experience.svelte";
 	import type { Texperience } from "$lib/types/experience";
-
+	import { projects } from "$lib/data/projects";
+	import Project from "$lib/components/project/Project.svelte";
+  
   function copyEmail() {
     navigator.clipboard.writeText(personalInformation.email)
   }
@@ -128,9 +130,11 @@
   </div>
 </section>
 
-<section>
+<section class="flex flex-col gap-12 w-full mb-28">
   <h3 class="text-3xl font-medium">Projects</h3>
-
+  {#each projects as project}
+    <Project {project} />
+  {/each}
 </section>
 
 <!-- Snippets -->
@@ -158,10 +162,3 @@
   
 </div>
 {/snippet}
-
-<style>
-  .active {
-    cursor: grabbing;
-    cursor: -webkit-grabbing;
-  }
-</style>
