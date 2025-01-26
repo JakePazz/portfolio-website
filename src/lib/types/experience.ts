@@ -1,3 +1,5 @@
+import type { Tdate } from "$lib/types/date"
+
 export type Texperience = {
   title: string,
   organisation: {
@@ -6,17 +8,12 @@ export type Texperience = {
   },
   description: string,
   keyPoints: string[],
-  start: TexperienceDate,
-  end?: TexperienceDate,
+  start: Tdate,
+  end?: Tdate,
   links?: TexperienceLink[]
 }
 
 type TexperienceLink = {
   title: string,
   url: string,
-}
-
-export type TexperienceDate = {
-  month?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12,
-  year: number,
 }

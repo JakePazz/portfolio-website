@@ -1,18 +1,13 @@
 <script lang="ts">
 	import Container from "$lib/components/Container.svelte";
-	import type { Texperience, TexperienceDate } from "$lib/types/experience";
+	import { formatDate } from "$lib/functions/formatDate";
+	import type { Tdate } from "$lib/types/date";
+	import type { Texperience } from "$lib/types/experience";
 	import { Link01Icon, Location01Icon } from "hugeicons-svelte";
 
   const { experience }: { experience: Texperience } = $props()
 
-  function formatDate(date: TexperienceDate) {
-    if (date.month) {
-      const startMonthWritten = new Date(2000, date.month - 1, 1).toLocaleString("default", { month: "short"})
-      return `${startMonthWritten}. ${date.year}`
-    }
 
-    return date.year
-  }
 
 </script>
 
