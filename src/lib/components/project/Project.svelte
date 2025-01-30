@@ -23,7 +23,7 @@
 <Container twStyles="flex gap-4">
   <div
   role="group"
-  class="relative flex-[3] max-w-fit"
+  class="relative flex-[3] max-w-fit flex items-center"
   onmouseenter={() => {hoveringImage = true}}
   onmouseleave={() => {hoveringImage = false}}
   >
@@ -37,7 +37,7 @@
       width={1600}
       height={900}
       crop="fill_pad"
-      class="rounded-3xl transition-all z-10 {hoveringImage ? "" : "blur-sm"}"
+      class="rounded-2xl transition-all z-10 {hoveringImage ? "" : "blur-sm"}"
     />
     {#if hoveringImage}
       <span transition:fly={{duration: 200, x: 20}} class="absolute top-1/2 right-4 z-20">
