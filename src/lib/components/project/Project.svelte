@@ -33,7 +33,7 @@
       </span>
     {/if}
     <CldImage
-      src={`portfolio/projects/${project.imagesFolder}/0`}
+      src={`projects/${project.imagesFolder}/0`}
       width={1600}
       height={900}
       crop="fill_pad"
