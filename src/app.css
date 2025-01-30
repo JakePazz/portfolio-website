@@ -5,16 +5,16 @@
 @tailwind utilities;
 
 .light {
-  --text: 237, 242, 247;
-  --text-dim: 189, 189, 189;
+  --text: 0, 0, 0;
+  --text-dim: 58, 57, 57;
 
-  --background: 8, 14, 17;
+  --background: 238, 244, 247;
 
-  --primary: 23, 105, 186;
-  --secondary: 27, 66, 105;
-  --accent: 107, 151, 230;
+  --primary: 69, 150, 232;
+  --secondary: 150, 189, 228;
+  --accent: 25, 68, 148;
 
-  --border: 13, 27, 38;
+  --border: 217, 217, 217;
 
   background-color: rgba(var(--background));
   color: rgba(var(--text));
@@ -34,23 +34,37 @@
 
   background-color: rgba(var(--background));
   color: rgba(var(--text));
-
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
+/* Scrollbar styles - applied to <main> */
+main {
+  overflow-y: auto;
+  --scrollbar-width: 12px;
+  --scrollbar-track-color: rgba(var(--background));
+  --scrollbar-thumb-color: rgba(var(--secondary));
+  --scrollbar-thumb-hover-color: rgba(var(--primary));
+
+  /* Theme switcher transition */
+  transition: background 1s;
+}
+
+main::-webkit-scrollbar {
   width: 12px;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+main::-webkit-scrollbar-track {
+  background: rgba(var(--background));
 }
 
-::-webkit-scrollbar-thumb {
+main::-webkit-scrollbar-thumb {
   background-color: rgba(var(--secondary));
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+main::-webkit-scrollbar-thumb:hover {
   background-color: rgba(var(--primary));
+}
+
+main::-webkit-scrollbar-button {
+  display: none;
 }

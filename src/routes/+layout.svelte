@@ -1,22 +1,58 @@
 <script lang="ts">
 	import '../app.css';
-	import { DocumentAttachmentIcon, Sun02Icon } from "hugeicons-svelte";
+	import { DocumentAttachmentIcon, Moon02Icon, Sun02Icon } from "hugeicons-svelte";
 	import Button from "$lib/components/Button.svelte"
 
 	import { personalInformation } from '$lib/data/personalInformation';
+	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 
 	let { children } = $props();
+
+	let theme = $state("dark")
+
+	onMount(() => {
+		// Set based upon browser setting if no stored preference
+		// const systemDark = window.matchMedia("(prefers-color-scheme: dark)")
+		// theme = systemDark.matches ? "dark" : "light"		
+		
+		// Check if previous stored theme
+		const storedTheme = localStorage.getItem("theme")
+
+		if (storedTheme) {
+			theme = storedTheme
+		}
+	})
+
 
 	function openCV() {
 		window.open(personalInformation.cv, "_blank")
 	}
 
+	function toggleTheme() {
+		theme = theme === "dark" ? "light" : "dark"
+		
+		localStorage.setItem("theme", theme)
+	}
+
 </script>
 
-<main class="w-full">
+<main class="w-full {theme} h-screen overflow-y-auto">
 	<header class="h-[4rem] box-border w-full px-6 pt-6 flex items-center justify-end gap-3">
     <Button onclick={openCV} ><DocumentAttachmentIcon size={34} color="rgba(var(--accent))"/> <p class="text-xl">CV</p> </Button>
-    <Button onclick={() => {}}><Sun02Icon size={34} color="rgba(var(--accent))"/></Button>
+    <Button onclick={toggleTheme}>
+			{#key theme}
+				{#if theme === "light"}
+					<span transition:fade>
+						<Moon02Icon size={34} color="rgba(var(--accent))"/>
+					</span>
+				{:else}
+					<span transition:fade>
+						<Sun02Icon size={34} color="rgba(var(--accent))"/>
+					</span>
+				{/if}
+			{/key}
+		</Button>
   </header>
 
 	<div class="px-16">
