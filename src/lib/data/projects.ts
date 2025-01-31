@@ -2,7 +2,7 @@ import type { Tproject } from "$lib/types/project";
 
 export const projects: Tproject[] = [
   {
-    title: "Portfolio - this website!",
+    title: "Portfolio - this site!",
     description: "A customer facing survey website accompanied by a staff portal to enable the business to gain insights into customer opinions and preferences overtime anonymously.",
     start: {
       year: 2024,
@@ -15,8 +15,10 @@ export const projects: Tproject[] = [
       "svelte",
     ],
     imagesFolder: "portfolio",
+    imagesCount: 1,
     links: {
-      github: "github.com/JakePazz",
+      github: "https://github.com/JakePazz",
+      liveSite: "https://jakepazzard.dev"
     }
   },
   {
@@ -38,6 +40,10 @@ export const projects: Tproject[] = [
       "aws-services"
     ],
     imagesFolder: "laneway-coffee-feedback-system",
+    imagesCount: 3,
     private: true,
+    links: {
+      readMore: "test"
+    }
   }
 ]

@@ -13,4 +13,5 @@ export type Tproject = {
     readMore?: string,
   },
   imagesFolder: string,
+  imagesCount: number,
 }

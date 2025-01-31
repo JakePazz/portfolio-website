@@ -11,18 +11,15 @@
 	import type { Texperience } from "$lib/types/experience";
 	import { projects } from "$lib/data/projects";
 	import Project from "$lib/components/project/Project.svelte";
+	import { openLink } from "$lib/functions/openLink";
   
   function copyEmail() {
     navigator.clipboard.writeText(personalInformation.email)
   }
 
-  function openLink(link: string | URL) {
-    window.open(link, "_blank")
-  }
-
+  // Timeline left/right button
   let timelineContainer: HTMLDivElement
 
-  // Timeline left/right button
   function scrollLeft() {
     timelineContainer.scrollBy({ left: -650, behavior: "smooth" })
   }
@@ -132,9 +129,11 @@
 
 <section class="flex flex-col gap-12 w-full mb-28">
   <h3 class="text-3xl font-medium">Projects</h3>
-  {#each projects as project}
-    <Project {project} />
-  {/each}
+  <div class="flex flex-col gap-32">
+    {#each projects as project, index}
+      <Project {project} aligned={index % 2 === 0 ? "right" : "left"} />
+    {/each}
+  </div>
 </section>
 
 <!-- Snippets -->

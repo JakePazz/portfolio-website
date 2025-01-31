@@ -68,3 +68,16 @@ main::-webkit-scrollbar-thumb:hover {
 main::-webkit-scrollbar-button {
   display: none;
 }
+
+/* Tailwind Utilities */
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  
+}

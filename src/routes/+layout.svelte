@@ -37,7 +37,7 @@
 
 </script>
 
-<main class="w-full {theme} h-screen overflow-y-auto">
+<main class="w-full {theme} h-screen overflow-y-auto overflow-x-hidden">
 	<header class="h-[4rem] box-border w-full px-6 pt-6 flex items-center justify-end gap-3">
     <Button onclick={openCV} ><DocumentAttachmentIcon size={34} color="rgba(var(--accent))"/> <p class="text-xl">CV</p> </Button>
     <Button onclick={toggleTheme}>
