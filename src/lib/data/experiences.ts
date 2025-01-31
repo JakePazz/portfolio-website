@@ -44,5 +44,27 @@ export const experiences: Texperience[] = [
         url: "https://shcg.ac.uk/fareham-college/"
       }
     ]
+  },
+  {
+    title: "T-Level Digital Production Design & Development",
+    description: "A qualification, equivalent to 3 A-Levels, developed in consultation with employers to learn the skills needed for industry. Covers the core knowledge of the digital sector as well as a placement to apply skills gained to the workplace",
+    organisation: {
+      name: "Fareham College",
+      link: "https://shcg.ac.uk/fareham-college/"
+    },
+    keyPoints: [
+      "Predicted Distinction overall, with an A (achieved) for the core component and Distinction (predicted) for the occupational specialism",
+      "Also achieved a Grade A in Level 3 Mathematical Studies Core Maths",
+    ],
+    start: {
+      month: 9,
+      year: 2023,
+    },
+    links: [
+      {
+        title: "T-Level DPDD",
+        url: "https://qualifications.pearson.com/en/qualifications/t-levels/digital-production-design-and-development.html#%2Ftab-September2023"
+      }
+    ]
   }
 ]

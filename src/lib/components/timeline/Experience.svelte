@@ -1,23 +1,19 @@
 <script lang="ts">
 	import Container from "$lib/components/Container.svelte";
 	import { formatDate } from "$lib/functions/formatDate";
-	import type { Tdate } from "$lib/types/date";
 	import type { Texperience } from "$lib/types/experience";
 	import { Link01Icon, Location01Icon } from "hugeicons-svelte";
 
   const { experience }: { experience: Texperience } = $props()
-
-
-
 </script>
 
 
 <Container twStyles="w-[650px] px-6 flex flex-col">
   <div class="inline-flex items-center justify-between">
-    <h4 class="text-2xl">{experience.title}</h4>
+    <h4 class="text-2xl text-balance">{experience.title}</h4>
     <span class="inline-flex items-center gap-1 text-textDim">
       <Location01Icon size={20} color="rgba(var(--accent))"/>
-      <a class="font-medium hover:text-accent/80 transition-all" href={experience.organisation.link} target="_blank">{experience.organisation.name}</a>
+      <a class="font-medium text-nowrap hover:text-accent/80 transition-all" href={experience.organisation.link} target="_blank">{experience.organisation.name}</a>
     </span>
   </div>
   <p class="text-textDim mb-6 ">{experience.description}</p>

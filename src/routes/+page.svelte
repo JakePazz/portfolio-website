@@ -12,7 +12,7 @@
 	import { projects } from "$lib/data/projects";
 	import Project from "$lib/components/project/Project.svelte";
 	import { openLink } from "$lib/functions/openLink";
-  
+
   function copyEmail() {
     navigator.clipboard.writeText(personalInformation.email)
   }
@@ -49,6 +49,20 @@
     const walk = (x - startX) * 1
     timelineContainer.scrollLeft = scrollingLeft - walk
   }
+
+  // Sort timeline items chronologically
+  experiences.sort((a, b) => {
+
+    if (a.start.year !== b.start.year) {
+      return a.start.year - b.start.year
+    }
+
+    if (a.start.month && b.start.month) {
+      return a.start.month - b.start.month
+    }
+
+    return 0
+  })
 
 </script>
 
@@ -110,7 +124,7 @@
   <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
   <div
   bind:this={timelineContainer}
-  class="flex w-full select-none overflow-x-scroll pb-16 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] cursor-grab"
+  class="flex w-full select-none overflow-x-scroll items-end pb-16 no-scrollbar cursor-grab"
   onmousedown={handleMouseDown}
   onmouseleave={() => {
     isDown = false
