@@ -64,6 +64,11 @@
     return 0
   })
 
+
+  // Good {} functionality
+  const hour: number = new Date().getHours()
+  const greeting: string = hour < 12 ? "Morning" : hour < 18 ? "Afternoon" : "Evening"
+
 </script>
 
 <section class="h-[calc(100dvh-4rem)] w-full pt-6 flex flex-col gap-4">
@@ -71,7 +76,7 @@
   <div class="pt-44 pb-6 flex-1 flex justify-start items-start flex-col gap-20">
     
     <div class="flex-1">
-      <h1 class="text-5xl">Good Evening, I'm <span class="bg-gradient-to-l from-primary to-accent text-transparent bg-clip-text">Jake Pazzard</span></h1>
+      <h1 class="text-5xl">Good {greeting}, I'm <span class="bg-gradient-to-l from-primary to-accent text-transparent bg-clip-text">Jake Pazzard</span></h1>
       <h5 class="text-xl text-textDim">A student software engineer</h5>
     </div>
 
