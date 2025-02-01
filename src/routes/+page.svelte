@@ -12,6 +12,7 @@
 	import { projects } from "$lib/data/projects";
 	import Project from "$lib/components/project/Project.svelte";
 	import { openLink } from "$lib/functions/openLink";
+	import { onMount } from "svelte";
 
   function copyEmail() {
     navigator.clipboard.writeText(personalInformation.email)
@@ -20,12 +21,19 @@
   // Timeline left/right button
   let timelineContainer: HTMLDivElement
 
+  let screenMedium = $state(false)
+
+  onMount(() => {
+    // Increase scroll width for timeline buttons if screen medium^
+    screenMedium = screen.width > 768 ? true : false
+  })
+
   function scrollLeft() {
-    timelineContainer.scrollBy({ left: -650, behavior: "smooth" })
+    timelineContainer.scrollBy({ left: screenMedium ? -650 : -400, behavior: "smooth" })
   }
 
   function scrollRight() {
-    timelineContainer.scrollBy({ left: 650, behavior: "smooth" })
+    timelineContainer.scrollBy({ left: screenMedium ? 650 : 400, behavior: "smooth" })
   }
 
   // Timeline click and drag horizontal scroll
@@ -73,14 +81,14 @@
 
 <section class="h-[calc(100dvh-4rem)] w-full pt-6 flex flex-col gap-4">
 
-  <div class="pt-44 pb-6 flex-1 flex justify-start items-start flex-col gap-20">
+  <div class="pt-16 md:pt-32 lg:pt-44 pb-6 flex-1 flex justify-start items-start flex-col gap-20">
     
     <div class="flex-1">
-      <h1 class="text-5xl">Good {greeting}, I'm <span class="bg-gradient-to-l from-primary to-accent text-transparent bg-clip-text">Jake Pazzard</span></h1>
-      <h5 class="text-xl text-textDim">A student software engineer</h5>
+      <h1 class="text-4xl md:text-5xl text-balance">Good {greeting}, I'm <span class="bg-gradient-to-l from-primary to-accent text-transparent bg-clip-text">Jake Pazzard</span></h1>
+      <h5 class="text-lg md:text-xl text-textDim">A student software engineer</h5>
     </div>
 
-    <div class="flex flex-nowrap gap-5">
+    <div class="flex flex-wrap md:flex-nowrap gap-5">
       <Button onclick={() => {copyEmail()}}><p class="text-2xl">Email</p><MailAtSign01Icon color="rgba(var(--accent))" size={30}/></Button>
       <Button onclick={() => {openLink(personalInformation.github)}}><p class="text-2xl">GitHub</p><Github01Icon color="rgba(var(--accent))" size={30}/></Button>
       <Button onclick={() => {openLink(personalInformation.linkedin)}}><p class="text-2xl">LinkedIn</p><Linkedin01Icon color="rgba(var(--accent))" size={30}/></Button>
@@ -92,8 +100,8 @@
   </div>
 </section>
 
-<section class="flex justify-center gap-12 w-full mt-16 mb-28">
-  <div class="w-1/2">
+<section class="flex flex-col md:flex-row justify-center gap-12 w-full mt-16 mb-28">
+  <div class="w-full md:w-1/2">
     <Container>
       <p class="pb-8 text-textDim">My name is Jake Pazzard and I am a student from the UK.</p>
       <p class="pb-4 text-textDim">I find myself curious in any technology I can get my digital hands on and enjoy creating solutions that solve people&apos;s problems while utilising modern tools available to us.</p>
@@ -102,7 +110,7 @@
       <p class="text-accent italic text-sm">Currently looking for a Degree apprenticeship in technology or a junior software development role.</p>
     </Container>
   </div>
-  <div class="flex flex-col w-1/2">
+  <div class="flex flex-col w-full md:w-1/2">
     <h5 class="text-2xl inline-flex gap-2 items-center"><LibraryIcon color="rgba(var(--accent))" size={30}/> I know</h5>
     <div class="flex-1 flex flex-wrap gap-3">
       {#each knownSkills as skill}

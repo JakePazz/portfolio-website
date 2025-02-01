@@ -14,7 +14,6 @@
 
   const skills = knownSkills.concat(learningSkills)
 
-
   const { project, aligned = "right" }: { project: Tproject, aligned: "left" | "right" } = $props()
 
   let hoveringImage: boolean = $state(false)
@@ -44,9 +43,9 @@
 
 </script>
 
-<!-- {aligned === "left" ? "translate-x-1/3" : "-translate-x-1/3"} -->
+<!-- on md screens^ {aligned === "left" ? "translate-x-1/3" : "-translate-x-1/3"} -->
 
-<Container  twStyles="flex gap-4 {translate} {aligned === "left" ? "flex-row-reverse" : ""} transition-all">
+<Container  twStyles="flex flex-col  gap-4 {translate} {aligned === "left" ? "md:flex-row-reverse" : "md:flex-row"} transition-all">
   <div
   role="group"
   class="relative flex-[3] max-w-fit flex items-center"
@@ -125,7 +124,7 @@
     {/if}
 
     {#if project.links}
-      <div class="flex-1 flex justify-end flex-col gap-2 items-{aligned === "left" ? "start" : "end"}">
+      <div class="flex-1 mt-6 md:mt-2 flex justify-end flex-col gap-2 items-{aligned === "left" ? "start" : "end"}">
         {#if project.links.github}
           <Button onclick={() => openLink(project.links!.github!)}><Github01Icon color="rgba(var(--accent))" size={32}/></Button>
         {/if}
@@ -142,17 +141,17 @@
 
 
 {#snippet expansionArrow()}
-
-  {#if aligned === "right"}
-    <!-- Forces expansion arrow to end -->
-    <div class="flex-1"></div>
-  {/if}
-
-  <Button onclick={toggleExpand}>
-    {#if aligned === "left"}
-      <ArrowLeft01Icon class="transition-all duration-[5000] {expanded ? "rotate-180" : "animate-pulse"}" color="rgba(var(--accent))" size={30}/>
-    {:else}
-      <ArrowRight01Icon class="transition-all {expanded ? "rotate-180" : "animate-pulse"}" color="rgba(var(--accent))" size={30}/>
+    {#if aligned === "right"}
+      <!-- Forces expansion arrow to end -->
+      <div class="flex-1"></div>
     {/if}
-  </Button>
+    <span>
+      <Button onclick={toggleExpand}>
+        {#if aligned === "left"}
+          <ArrowLeft01Icon class="transition-all {expanded ? "rotate-180" : "animate-pulse"}" color="rgba(var(--accent))" size={30}/>
+        {:else}
+          <ArrowRight01Icon class="transition-all {expanded ? "rotate-180" : "animate-pulse"}" color="rgba(var(--accent))" size={30}/>
+        {/if}
+      </Button>
+    </span>
 {/snippet}

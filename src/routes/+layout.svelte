@@ -37,8 +37,8 @@
 
 </script>
 
-<main class="w-full {theme} h-screen overflow-y-auto overflow-x-hidden">
-	<header class="h-[4rem] box-border w-full px-6 pt-6 flex items-center justify-end gap-3">
+<main class="w-full {theme} h-screen overflow-y-auto overflow-x-hidden bg-background">
+	<header class="h-[4rem] box-border w-full px-2 md:px-4 lg:px-6 pt-6 flex items-center justify-end gap-3">
     <Button onclick={openCV} ><DocumentAttachmentIcon size={34} color="rgba(var(--accent))"/> <p class="text-xl">CV</p> </Button>
     <Button onclick={toggleTheme}>
 			{#key theme}
@@ -55,7 +55,7 @@
 		</Button>
   </header>
 
-	<div class="px-16">
+	<div class="px-4 md:px-6 lg:px-16">
 		{@render children()}
 	</div>
 

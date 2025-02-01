@@ -8,13 +8,13 @@
 </script>
 
 
-<Container twStyles="w-[650px] px-6 flex flex-col">
-  <div class="inline-flex items-center justify-between">
-    <h4 class="text-2xl text-balance">{experience.title}</h4>
+<Container twStyles="w-[400px] md:w-[650px] px-6 flex flex-col">
+  <div class="inline-flex flex-col items-start md:items-center md:flex-row-reverse justify-between">
     <span class="inline-flex items-center gap-1 text-textDim">
       <Location01Icon size={20} color="rgba(var(--accent))"/>
       <a class="font-medium text-nowrap hover:text-accent/80 transition-all" href={experience.organisation.link} target="_blank">{experience.organisation.name}</a>
     </span>
+    <h4 class="text-2xl text-balance">{experience.title}</h4>
   </div>
   <p class="text-textDim mb-6 ">{experience.description}</p>
   
