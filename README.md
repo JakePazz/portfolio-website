@@ -5,6 +5,7 @@ My (slightly) overengineered portfolio website, built in Svelte5 with TypeScript
 ## Things to know
 
 - Using the [hugeicons](https://hugeicons.com/) package for icons along with [devicon](https://devicon.dev/) to supplement for the skills showchasing
+- Using [marked](https://github.com/markedjs/marked) to convert the blobs (stored with Vercel Blob) markdown files into html
 
 ## Cloudinary Usage
 

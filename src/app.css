@@ -36,6 +36,10 @@
   color: rgba(var(--text));
 }
 
+body {
+  overflow: hidden;
+}
+
 /* Scrollbar styles - applied to <main> */
 main {
   overflow-y: auto;
@@ -80,4 +84,51 @@ main::-webkit-scrollbar-button {
     scrollbar-width: none;
   }
   
+}
+
+/* Notes styling */
+
+.generated-notes h1 {
+  @apply text-4xl font-medium
+}
+
+.generated-notes h2 {
+  @apply text-3xl font-medium my-2
+}
+
+.generated-notes h3 {
+  @apply text-2xl font-medium my-2
+}
+
+.generated-notes h4 {
+  @apply text-xl my-2
+}
+
+.generated-notes h5 {
+  @apply text-lg my-2
+}
+
+.generated-notes p {
+  @apply text-textDim
+}
+
+/* Lists */
+.generated-notes ul, .generated-notes ol {
+  @apply text-textDim list-disc marker:text-accent ml-8 my-1
+}
+
+/* Images */
+
+.generated-notes img {
+  @apply rounded-lg
+}
+
+/* Links */
+
+.generated-notes a {
+  @apply font-medium
+}
+
+.generated-notes a:hover {
+  @apply text-accent transition-all
 }
