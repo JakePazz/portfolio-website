@@ -4,7 +4,7 @@ import type { LayoutServerLoad } from "./$types";
 import type { Tinformation } from "$lib/types/information";
 import { error } from "@sveltejs/kit";
 
-export const load: LayoutServerLoad = async () => {
+export const load: LayoutServerLoad = async ({ url }) => {
 
   const mongo = new MongoClient(MONGODB_URI)
   const db = mongo.db("portfolio")
@@ -25,7 +25,10 @@ export const load: LayoutServerLoad = async () => {
     error(500, { message: "No information found from DB" })
   }
 
+  const { pathname } = url;
+
   return {
-    information
+    information,
+    pathname
   }
 }

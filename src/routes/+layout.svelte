@@ -6,7 +6,6 @@
 	import { fade } from 'svelte/transition';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
-
 	
 	let { children, data } = $props();
 
@@ -25,7 +24,6 @@
 		}
 	})
 
-
 	function openCV() {
 		window.open(data.information.cv, "_blank")
 	}
@@ -38,8 +36,9 @@
 
 </script>
 
+{#key data.pathname}
 <main class="w-full {theme} h-screen overflow-y-auto overflow-x-hidden bg-background">
-	<header class="h-[4rem] box-border w-full px-2 md:px-4 lg:px-6 pt-6 flex items-center justify-end gap-3">
+	<header in:fade={{ duration: 300, delay: 300 }} out:fade={{ duration: 300 }} class="h-[4rem] box-border w-full px-2 md:px-4 lg:px-6 pt-6 flex items-center justify-end gap-3">
 		{#if page.route.id !== "/"}
 			<Button onclick={() => {goto("/")}}><Home09Icon size={34} color="rgba(var(--accent))"/></Button>
 			<div class="flex-1"></div>
@@ -60,7 +59,7 @@
 		</Button>
   </header>
 
-	<div class="px-4 md:px-6 lg:px-16">
+	<div in:fade={{ duration: 300, delay: 300 }} out:fade={{ duration: 300 }} class="px-4 md:px-6 lg:px-16">
 		{@render children()}
 	</div>
 
@@ -68,3 +67,4 @@
 		<p class="text-textDim">&copy; 2025 <a class="hover:underline" target="_blank" href="https://github.com/JakePazz">Jake Pazzard</a></p>
 	</footer>
 </main>
+{/key}
