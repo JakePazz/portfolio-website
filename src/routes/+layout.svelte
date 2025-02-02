@@ -1,9 +1,11 @@
 <script lang="ts">
 	import '../app.css';
-	import { DocumentAttachmentIcon, Moon02Icon, Sun02Icon } from "hugeicons-svelte";
+	import { DocumentAttachmentIcon, Home09Icon, Moon02Icon, Sun02Icon } from "hugeicons-svelte";
 	import Button from "$lib/components/Button.svelte"
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { page } from '$app/state';
+	import { goto } from '$app/navigation';
 
 	
 	let { children, data } = $props();
@@ -38,6 +40,10 @@
 
 <main class="w-full {theme} h-screen overflow-y-auto overflow-x-hidden bg-background">
 	<header class="h-[4rem] box-border w-full px-2 md:px-4 lg:px-6 pt-6 flex items-center justify-end gap-3">
+		{#if page.route.id !== "/"}
+			<Button onclick={() => {goto("/")}}><Home09Icon size={34} color="rgba(var(--accent))"/></Button>
+			<div class="flex-1"></div>
+		{/if}
     <Button onclick={openCV} ><DocumentAttachmentIcon size={34} color="rgba(var(--accent))"/> <p class="text-xl">CV</p> </Button>
     <Button onclick={toggleTheme}>
 			{#key theme}
