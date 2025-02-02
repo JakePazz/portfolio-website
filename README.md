@@ -1,6 +1,6 @@
 # Portfolio Website
 
-My (slightly) overengineered portfolio website, built in Svelte5 with TypeScript and Tailwind CSS.
+My (slightly) overengineered portfolio website, built in Svelte 5 with TypeScript and Tailwind CSS.
 
 ## Things to know
 
