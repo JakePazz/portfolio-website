@@ -2,12 +2,11 @@
 	import '../app.css';
 	import { DocumentAttachmentIcon, Moon02Icon, Sun02Icon } from "hugeicons-svelte";
 	import Button from "$lib/components/Button.svelte"
-
-	import { personalInformation } from '$lib/data/personalInformation';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
-	let { children } = $props();
+	
+	let { children, data } = $props();
 
 	let theme = $state("dark")
 
@@ -26,7 +25,7 @@
 
 
 	function openCV() {
-		window.open(personalInformation.cv, "_blank")
+		window.open(data.information.cv, "_blank")
 	}
 
 	function toggleTheme() {

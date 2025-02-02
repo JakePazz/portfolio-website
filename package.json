@@ -37,6 +37,7 @@
 		"vitest": "^2.0.4"
 	},
 	"dependencies": {
-		"hugeicons-svelte": "^0.0.1"
+		"hugeicons-svelte": "^0.0.1",
+		"mongodb": "6.13"
 	}
 }

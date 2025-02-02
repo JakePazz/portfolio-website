@@ -4,17 +4,16 @@
 	import Container from "../Container.svelte";
 	import { formatDate } from "$lib/functions/formatDate";
 	import Button from "../Button.svelte";
-	import { ArrowLeft01Icon, ArrowRight01Icon, Github01Icon, Globe02Icon, Notebook01Icon, Notebook02Icon } from "hugeicons-svelte";
+	import { ArrowLeft01Icon, ArrowRight01Icon, Github01Icon, Globe02Icon, Notebook02Icon } from "hugeicons-svelte";
 	import { fly } from "svelte/transition";
-
-  // Data
-  import { knownSkills, learningSkills } from "$lib/data/skills"
-	import Skill from "../Skill.svelte";
 	import { openLink } from "$lib/functions/openLink";
+	import type { Tskill } from "$lib/types/skill";
+	import Skill from "$lib/components/Skill.svelte";
 
+  const { project, aligned = "right", knownSkills, learningSkills }: { project: Tproject, aligned: "left" | "right", knownSkills: Tskill[], learningSkills: Tskill[] } = $props()
+
+  // Combine known and learning skills
   const skills = knownSkills.concat(learningSkills)
-
-  const { project, aligned = "right" }: { project: Tproject, aligned: "left" | "right" } = $props()
 
   let hoveringImage: boolean = $state(false)
   let imagesContainer: HTMLDivElement

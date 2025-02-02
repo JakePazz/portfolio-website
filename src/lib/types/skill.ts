@@ -3,4 +3,5 @@ export type Tskill = {
   id: string,
   deviconName: string,
   link: string,
+  type: "known" | "learning",
 }

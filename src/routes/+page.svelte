@@ -4,18 +4,16 @@
   import { ArrowDown01Icon, ArrowLeft01Icon, ArrowRight01Icon, Github01Icon, LibraryIcon, Linkedin01Icon, MailAtSign01Icon, Mortarboard02Icon } from "hugeicons-svelte";
 	import PlaneIcon from "$lib/components/PlaneIcon.svelte";
 	import Skill from "$lib/components/Skill.svelte";
-  import { knownSkills, learningSkills } from "$lib/data/skills"
-  import { personalInformation } from "$lib/data/personalInformation"
-  import { experiences } from "$lib/data/experiences"
 	import Experience from "$lib/components/timeline/Experience.svelte";
 	import type { Texperience } from "$lib/types/experience";
-	import { projects } from "$lib/data/projects";
 	import Project from "$lib/components/project/Project.svelte";
 	import { openLink } from "$lib/functions/openLink";
 	import { onMount } from "svelte";
 
+  let { data } = $props();
+  
   function copyEmail() {
-    navigator.clipboard.writeText(personalInformation.email)
+    navigator.clipboard.writeText(data.information.email)
   }
 
   // Timeline left/right button
@@ -59,7 +57,7 @@
   }
 
   // Sort timeline items chronologically
-  experiences.sort((a, b) => {
+  data.experiences.sort((a, b) => {
 
     if (a.start.year !== b.start.year) {
       return a.start.year - b.start.year
@@ -90,8 +88,8 @@
 
     <div class="flex flex-wrap md:flex-nowrap gap-5">
       <Button onclick={() => {copyEmail()}}><p class="text-2xl">Email</p><MailAtSign01Icon color="rgba(var(--accent))" size={30}/></Button>
-      <Button onclick={() => {openLink(personalInformation.github)}}><p class="text-2xl">GitHub</p><Github01Icon color="rgba(var(--accent))" size={30}/></Button>
-      <Button onclick={() => {openLink(personalInformation.linkedin)}}><p class="text-2xl">LinkedIn</p><Linkedin01Icon color="rgba(var(--accent))" size={30}/></Button>
+      <Button onclick={() => {openLink(data.information.github)}}><p class="text-2xl">GitHub</p><Github01Icon color="rgba(var(--accent))" size={30}/></Button>
+      <Button onclick={() => {openLink(data.information.linkedin)}}><p class="text-2xl">LinkedIn</p><Linkedin01Icon color="rgba(var(--accent))" size={30}/></Button>
     </div>
     
     <div class="animate-bounce w-full flex items-center justify-center">
@@ -113,13 +111,13 @@
   <div class="flex flex-col w-full md:w-1/2">
     <h5 class="text-2xl inline-flex gap-2 items-center"><LibraryIcon color="rgba(var(--accent))" size={30}/> I know</h5>
     <div class="flex-1 flex flex-wrap gap-3">
-      {#each knownSkills as skill}
+      {#each data.knownSkills as skill}
         <Skill {skill} />
       {/each}
     </div>
     <h5 class="text-2xl inline-flex gap-2 items-center"><Mortarboard02Icon color="rgba(var(--accent))" size={30}/> I&apos;m Learning</h5>
     <div class="flex-1 flex flex-wrap gap-3">
-      {#each learningSkills as skill}
+      {#each data.learningSkills as skill}
         <Skill {skill} />
       {/each}
     </div>
@@ -148,7 +146,7 @@
   onmousemove={handleMouseMove}
   role="list"
   >
-    {#each experiences as experience, index}
+    {#each data.experiences as experience, index}
       {@render timelineSection(experience, index)}
     {/each}
   </div>
@@ -157,8 +155,8 @@
 <section class="flex flex-col gap-12 w-full mb-28">
   <h3 class="text-3xl font-medium">Projects</h3>
   <div class="flex flex-col gap-32">
-    {#each projects as project, index}
-      <Project {project} aligned={index % 2 === 0 ? "right" : "left"} />
+    {#each data.projects as project, index}
+      <Project {project} knownSkills={data.knownSkills} learningSkills={data.learningSkills} aligned={index % 2 === 0 ? "right" : "left"} />
     {/each}
   </div>
 </section>
@@ -183,7 +181,7 @@
     </div>
 
     <!-- Line -->
-    <div class="bg-secondary/60 h-1 flex-[2] mb-1 {index === experiences.length - 1 ? 'rounded-r-full' : ''}"></div>
+    <div class="bg-secondary/60 h-1 flex-[2] mb-1 {index === data.experiences.length - 1 ? 'rounded-r-full' : ''}"></div>
   </div>
   
 </div>
