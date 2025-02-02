@@ -27,6 +27,7 @@ Data is stored within MongoDB Atlas so that it can be updated without redeployin
 
 - **VITE_CLOUDINARY_CLOUD_NAME**: Retrieved from cloudinary dashboard and used by svelte-cloudinary to source images
 - **MONGODB_URI**: Connection string for the MongoDB database
+- **VERCEL_BLOB_BASE_URL**: Base URL for Vercel Blob storage that holds notes
 
 ## Future Additions
 
