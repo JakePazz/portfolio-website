@@ -33,4 +33,4 @@ Data is stored within MongoDB Atlas so that it can be updated without redeployin
 Things I want to add - at some point
 
 - Full screen image viewing, particularly to help mobile users
-- Seperate pages for project write-ups (maybe that parses md files?)
+- Improve how the Skills component handles hovering
