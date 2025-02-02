@@ -126,7 +126,7 @@ main::-webkit-scrollbar-button {
 /* Links */
 
 .generated-notes a {
-  @apply font-medium
+  @apply font-bold
 }
 
 .generated-notes a:hover {
