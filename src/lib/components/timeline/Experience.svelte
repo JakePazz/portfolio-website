@@ -9,6 +9,8 @@
 
 
 <Container twStyles="w-[400px] md:w-[650px] px-6 flex flex-col">
+  
+  <!-- Title + Location -->
   <div class="inline-flex flex-col items-start md:items-center md:flex-row-reverse justify-between">
     <span class="inline-flex items-center gap-1 text-textDim">
       <Location01Icon size={20} color="rgba(var(--accent))"/>
@@ -16,6 +18,7 @@
     </span>
     <h4 class="text-2xl text-balance">{experience.title}</h4>
   </div>
+
   <p class="text-textDim mb-6 ">{experience.description}</p>
   
   <ul class="ml-8 mb-6 list-disc marker:text-accent">
@@ -23,7 +26,6 @@
       <li class="text-textDim">{point}</li>
     {/each}
   </ul>
-
 
   <div class="flex justify-between items-end w-full flex-1">
 

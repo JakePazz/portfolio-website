@@ -31,6 +31,7 @@
   let expanded: boolean = $state(false)
   let translate: string = $state(aligned === "left" ? "translate-x-1/3" : "-translate-x-1/3")
  
+  // Removes translate from Container if users expands it
   function toggleExpand() {
     if (translate === "") {
       translate = (aligned === "left" ? "translate-x-1/3" : "-translate-x-1/3")
@@ -45,6 +46,7 @@
 <!-- on md screens^ {aligned === "left" ? "translate-x-1/3" : "-translate-x-1/3"} -->
 
 <Container  twStyles="flex flex-col  gap-4 {translate} {aligned === "left" ? "md:flex-row-reverse" : "md:flex-row"} transition-all">
+  <!-- Image container -->
   <div
   role="group"
   class="relative flex-[3] max-w-fit flex items-center"
@@ -76,6 +78,7 @@
     {/if}
   </div>
 
+  <!-- Content container -->
   <div class="flex-1 flex flex-col ">
     <div class="flex gap-2 items-center text-textDim text-sm mb-2 flex-wrap">
       
