@@ -1,18 +1,25 @@
 <script lang="ts">
 	import Container from "$lib/components/Container.svelte";
 	import Button from "$lib/components/Button.svelte";
-  import { ArrowDown01Icon, ArrowLeft01Icon, ArrowRight01Icon, Github01Icon, LibraryIcon, Linkedin01Icon, MailAtSign01Icon, Mortarboard02Icon } from "hugeicons-svelte";
+  import { ArrowDown01Icon, ArrowLeft01Icon, ArrowRight01Icon, Github01Icon, LibraryIcon, Linkedin01Icon, MailAtSign01Icon, Mortarboard02Icon, TaskAdd02Icon } from "hugeicons-svelte";
 	import Skill from "$lib/components/Skill.svelte";
 	import Experience from "$lib/components/timeline/Experience.svelte";
 	import type { Texperience } from "$lib/types/experience";
 	import Project from "$lib/components/project/Project.svelte";
 	import { openLink } from "$lib/functions/openLink";
 	import { onMount } from "svelte";
+	import { fly } from "svelte/transition";
 
   let { data } = $props();
-  
+  let showCopyConfirmation = $state(false)
+
   function copyEmail() {
     navigator.clipboard.writeText(data.information.email)
+    showCopyConfirmation = true
+
+    setTimeout(() => {
+      showCopyConfirmation = false
+    }, 3000)
   }
 
   // Timeline left/right button
@@ -159,6 +166,14 @@
     {/each}
   </div>
 </section>
+
+<!-- Copy confirmation message -->
+{#if showCopyConfirmation}
+  <div role="alert" transition:fly={{duration: 350, y: 50}} class="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-secondary/30 rounded-lg inline-flex gap-4 px-2 py-4 items-center">
+    <TaskAdd02Icon color="rgba(var(--accent))" size={30}/>
+    <p class="text-textDim text-lg">Copied to Clipboard</p>
+  </div>
+{/if}
 
 <!-- Snippets -->
 
