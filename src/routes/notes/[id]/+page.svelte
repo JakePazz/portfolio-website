@@ -10,7 +10,7 @@
 <section class="generated-notes pt-6 flex flex-col gap-4 m-auto w-[95%] md:w-[70%]">
   <div class="flex flex-col bg-primary/5 rounded-lg px-4 py-4">
     <span class="inline-flex gap-1 items-center">
-      <HugeiconsIcon icon={PenTool03Icon} color="rgba(var(--accent))" size={18}/>
+      <HugeiconsIcon className="text-accent" icon={PenTool03Icon} size={18}/>
       <p>{formatDate(data.date)}</p>
     </span>
     <h1 class="text-5xl">{data.title}</h1>

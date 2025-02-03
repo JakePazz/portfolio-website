@@ -4,7 +4,7 @@
 	import Container from "../Container.svelte";
 	import { formatDate } from "$lib/functions/formatDate";
 	import Button from "../Button.svelte";
-	import { ArrowLeft01Icon, ArrowRight01Icon, EarthIcon, Github01Icon, Globe02Icon, GlobeFreeIcons, GloveFreeIcons, InternetAntenna01FreeIcons, InternetAntenna01Icon, InternetIcon, Notebook01Icon } from "@hugeicons/core-free-icons";
+	import { ArrowLeft01Icon, ArrowRight01Icon, BookBookmark01Icon, ComputerIcon, CursorInWindowIcon, CursorPointer01Icon, EarthIcon, Github01Icon, Globe02Icon, GlobeFreeIcons, GloveFreeIcons, InternetAntenna01FreeIcons, InternetAntenna01Icon, InternetIcon, Notebook01Icon, Notebook02Icon, NotebookIcon } from "@hugeicons/core-free-icons";
 	import { fly } from "svelte/transition";
 	import { openLink } from "$lib/functions/openLink";
 	import type { Tskill } from "$lib/types/skill";
@@ -56,7 +56,7 @@
   >
     {#if hoveringImage && project.imagesCount > 1}
       <span transition:fly={{duration: 200, x: -20}} class="absolute top-1/2 left-4 z-20">
-        <Button onclick={prevImageIndex}><HugeiconsIcon icon={ArrowLeft01Icon} color="rgba(var(--accent))" size={30}/></Button>
+        <Button onclick={prevImageIndex}><HugeiconsIcon icon={ArrowLeft01Icon} className="text-accent" size={30}/></Button>
       </span>
     {/if}
     
@@ -74,7 +74,7 @@
 
     {#if hoveringImage && project.imagesCount > 1}
       <span transition:fly={{duration: 200, x: 20}} class="absolute top-1/2 right-4 z-20">
-        <Button onclick={nextImageIndex}><HugeiconsIcon icon={ArrowRight01Icon} color="rgba(var(--accent))" size={30}/> </Button>
+        <Button onclick={nextImageIndex}><HugeiconsIcon icon={ArrowRight01Icon} className="text-accent" size={30}/> </Button>
       </span>
     {/if}
   </div>
@@ -132,10 +132,10 @@
           <Button onclick={() => openLink(project.links!.github!)}><HugeiconsIcon className="text-accent" icon={Github01Icon} size={32}/></Button>
         {/if}
         {#if project.links.liveSite}
-          <Button onclick={() => openLink(project.links!.liveSite!)}><HugeiconsIcon className="text-accent fill-none" icon={Globe02Icon} size={32}/></Button>
+          <Button onclick={() => openLink(project.links!.liveSite!)}><HugeiconsIcon className="text-accent fill-none" icon={ComputerIcon} size={32}/></Button>
         {/if}
         {#if project.links.readMore}
-          <Button onclick={() => openLink(project.links!.readMore!)}><HugeiconsIcon className="text-accent" icon={Notebook01Icon} size={32}/></Button>
+          <Button onclick={() => openLink(project.links!.readMore!)}><HugeiconsIcon className="text-accent" icon={BookBookmark01Icon} size={32}/></Button>
         {/if}
       </div>
     {/if}
@@ -151,9 +151,9 @@
     <span>
       <Button onclick={toggleExpand}>
         {#if aligned === "left"}
-          <HugeiconsIcon icon={ArrowLeft01Icon} className="transition-all {expanded ? "rotate-180" : "animate-pulse"}" color="rgba(var(--accent))" size={30}/>
+          <HugeiconsIcon icon={ArrowLeft01Icon} className="transition-all {expanded ? "rotate-180" : "animate-pulse"} text-accent" size={30}/>
         {:else}
-          <HugeiconsIcon icon={ArrowRight01Icon} className="transition-all {expanded ? "rotate-180" : "animate-pulse"}" color="rgba(var(--accent))" size={30}/>
+          <HugeiconsIcon icon={ArrowRight01Icon} className="transition-all {expanded ? "rotate-180" : "animate-pulse"} text-accent" size={30}/>
         {/if}
       </Button>
     </span>

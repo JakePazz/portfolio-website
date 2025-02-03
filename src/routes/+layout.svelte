@@ -41,19 +41,19 @@
 <main class="w-full {theme} h-screen overflow-y-auto overflow-x-hidden bg-background">
 	<header in:fade={{ duration: 300, delay: 300 }} out:fade={{ duration: 300 }} class="h-[4rem] box-border w-full px-2 md:px-4 lg:px-6 pt-6 flex items-center justify-end gap-3">
 		{#if page.route.id !== "/"}
-			<Button onclick={() => {goto("/")}}><HugeiconsIcon icon={Home09Icon} size={34} color="rgba(var(--accent))"/></Button>
+			<Button onclick={() => {goto("/")}}><HugeiconsIcon icon={Home09Icon} size={34} className="text-accent"/></Button>
 			<div class="flex-1"></div>
 		{/if}
-    <Button onclick={openCV} ><HugeiconsIcon icon={DocumentAttachmentIcon} size={34} color="rgba(var(--accent))"/> <p class="text-xl">CV</p> </Button>
+    <Button onclick={openCV} ><HugeiconsIcon icon={DocumentAttachmentIcon} size={34} className="text-accent"/> <p class="text-xl">CV</p> </Button>
     <Button onclick={toggleTheme}>
 			{#key theme}
 				{#if theme === "light"}
 					<span transition:fade>
-						<HugeiconsIcon icon={Moon02Icon} size={34} color="rgba(var(--accent))"/>
+						<HugeiconsIcon icon={Moon02Icon} size={34} className="text-accent"/>
 					</span>
 				{:else}
 					<span transition:fade>
-						<HugeiconsIcon icon={Sun02Icon} size={34} color="rgba(var(--accent))"/>
+						<HugeiconsIcon icon={Sun02Icon} size={34} className="text-accent"/>
 					</span>
 				{/if}
 			{/key}
