@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Container from "$lib/components/Container.svelte";
 	import Button from "$lib/components/Button.svelte";
-  import { ArrowDown01Icon, ArrowLeft01Icon, ArrowRight01Icon, Github01Icon, LibraryIcon, Linkedin01Icon, MailAtSign01Icon, Mortarboard02Icon, TaskAdd02Icon } from "hugeicons-svelte";
+  import { ArrowDown01Icon, ArrowLeft01Icon, ArrowRight01Icon, Github01Icon, LibraryIcon, Linkedin01Icon, MailAtSign01Icon, Mortarboard02Icon, TaskAdd02Icon } from "@hugeicons/core-free-icons";
+  import { HugeiconsIcon } from "@hugeicons/svelte";
 	import Skill from "$lib/components/Skill.svelte";
 	import Experience from "$lib/components/timeline/Experience.svelte";
 	import type { Texperience } from "$lib/types/experience";
@@ -93,13 +94,13 @@
     </div>
 
     <div class="flex flex-wrap md:flex-nowrap gap-5">
-      <Button onclick={() => {copyEmail()}}><p class="text-2xl">Email</p><MailAtSign01Icon color="rgba(var(--accent))" size={30}/></Button>
-      <Button onclick={() => {openLink(data.information.github)}}><p class="text-2xl">GitHub</p><Github01Icon color="rgba(var(--accent))" size={30}/></Button>
-      <Button onclick={() => {openLink(data.information.linkedin)}}><p class="text-2xl">LinkedIn</p><Linkedin01Icon color="rgba(var(--accent))" size={30}/></Button>
+      <Button onclick={() => {copyEmail()}}><p class="text-2xl">Email</p><HugeiconsIcon icon={MailAtSign01Icon} color="rgba(var(--accent))" size={30}/></Button>
+      <Button onclick={() => {openLink(data.information.github)}}><p class="text-2xl">GitHub</p><HugeiconsIcon icon={Github01Icon} color="rgba(var(--accent))" size={30}/></Button>
+      <Button onclick={() => {openLink(data.information.linkedin)}}><p class="text-2xl">LinkedIn</p><HugeiconsIcon icon={Linkedin01Icon} color="rgba(var(--accent))" size={30}/></Button>
     </div>
     
     <div class="animate-bounce w-full flex items-center justify-center">
-      <ArrowDown01Icon color="rgba(var(--accent))" size={30}/>
+      <HugeiconsIcon icon={ArrowDown01Icon} color="rgba(var(--accent))" size={30}/>
     </div>
   </div>
 </section>
@@ -115,13 +116,13 @@
     </Container>
   </div>
   <div class="flex flex-col w-full md:w-1/2">
-    <h5 class="text-2xl inline-flex gap-2 items-center"><LibraryIcon color="rgba(var(--accent))" size={30}/> I know</h5>
+    <h5 class="text-2xl inline-flex gap-2 items-center"><HugeiconsIcon icon={LibraryIcon} color="rgba(var(--accent))" size={30}/> I know</h5>
     <div class="flex-1 flex flex-wrap gap-3">
       {#each data.knownSkills as skill}
         <Skill {skill} />
       {/each}
     </div>
-    <h5 class="text-2xl inline-flex gap-2 items-center"><Mortarboard02Icon color="rgba(var(--accent))" size={30}/> I&apos;m Learning</h5>
+    <h5 class="text-2xl inline-flex gap-2 items-center"><HugeiconsIcon icon={Mortarboard02Icon} color="rgba(var(--accent))" size={30}/> I&apos;m Learning</h5>
     <div class="flex-1 flex flex-wrap gap-3">
       {#each data.learningSkills as skill}
         <Skill {skill} />
@@ -134,8 +135,8 @@
   <div class="flex justify-between items-center">
     <h3 class="text-3xl font-medium">Timeline</h3>
     <div class="inline-flex gap-2 items-center">
-      <Button onclick={scrollLeft}><ArrowLeft01Icon color="rgba(var(--accent))" size={30}/></Button>
-      <Button onclick={scrollRight}><ArrowRight01Icon color="rgba(var(--accent))" size={30}/></Button>
+      <Button onclick={scrollLeft}><HugeiconsIcon icon={ArrowLeft01Icon} color="rgba(var(--accent))" size={30}/></Button>
+      <Button onclick={scrollRight}><HugeiconsIcon icon={ArrowRight01Icon} color="rgba(var(--accent))" size={30}/></Button>
     </div>  
   </div>
   <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
@@ -170,7 +171,7 @@
 <!-- Copy confirmation message -->
 {#if showCopyConfirmation}
   <div role="alert" transition:fly={{duration: 350, y: 50}} class="absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-secondary/30 rounded-lg inline-flex gap-4 px-2 py-4 items-center">
-    <TaskAdd02Icon color="rgba(var(--accent))" size={30}/>
+    <HugeiconsIcon icon={TaskAdd02Icon} color="rgba(var(--accent))" size={30}/>
     <p class="text-textDim text-lg">Copied to Clipboard</p>
   </div>
 {/if}
