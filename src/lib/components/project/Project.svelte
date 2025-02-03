@@ -30,12 +30,12 @@
   }
 
   let expanded: boolean = $state(false)
-  let translate: string = $state(aligned === "left" ? "translate-x-1/3" : "-translate-x-1/3")
+  let translate: string = $state(aligned === "left" ? "md:translate-x-1/3" : "md:-translate-x-1/3")
  
   // Removes translate from Container if users expands it
   function toggleExpand() {
     if (translate === "") {
-      translate = (aligned === "left" ? "translate-x-1/3" : "-translate-x-1/3")
+      translate = (aligned === "left" ? "md:translate-x-1/3" : "md:-translate-x-1/3")
     } else {
       translate = ""
     }
@@ -46,7 +46,7 @@
 
 <!-- on md screens^ {aligned === "left" ? "translate-x-1/3" : "-translate-x-1/3"} -->
 
-<Container  twStyles="flex flex-col  gap-4 {translate} {aligned === "left" ? "md:flex-row-reverse" : "md:flex-row"} transition-all">
+<Container  twStyles="flex flex-col gap-4  {aligned === "left" ? "md:flex-row-reverse" : "md:flex-row"} transition-all {translate}">
   <!-- Image container -->
   <div
   role="group"
@@ -148,7 +148,7 @@
       <!-- Forces expansion arrow to end -->
       <div class="flex-1"></div>
     {/if}
-    <span>
+    <span class="hidden md:block">
       <Button onclick={toggleExpand}>
         {#if aligned === "left"}
           <HugeiconsIcon icon={ArrowLeft01Icon} className="transition-all {expanded ? "rotate-180" : "animate-pulse"} text-accent" size={30}/>
