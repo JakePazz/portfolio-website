@@ -50,7 +50,7 @@
   <!-- Image container -->
   <div
   role="group"
-  class="relative flex-[3] max-w-fit flex items-center"
+  class="relative flex-[3] max-w-[1600px] flex items-center"
   onmouseenter={() => {hoveringImage = true}}
   onmouseleave={() => {hoveringImage = false}}
   >
