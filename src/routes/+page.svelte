@@ -31,6 +31,20 @@
   onMount(() => {
     // Increase scroll width for timeline buttons if screen medium^
     screenMedium = screen.width > 768 ? true : false
+
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("!opacity-100")
+        }
+      })
+    })
+
+    const hiddenElements = document.querySelectorAll(".loading-fade-in")
+    hiddenElements.forEach((element) => {
+      observer.observe(element)
+    })
   })
 
   function scrollLeft() {
@@ -82,9 +96,10 @@
   const hour: number = new Date().getHours()
   const greeting: string = hour < 12 ? "Morning" : hour < 18 ? "Afternoon" : "Evening"
 
+
 </script>
 
-<section class="h-[calc(100dvh-4rem)] w-full pt-6 flex flex-col gap-4">
+<section class="transition-all duration-[1s] loading-fade-in h-[calc(100dvh-4rem)] w-full pt-6 flex flex-col gap-4 opacity-0">
 
   <div class="pt-16 md:pt-32 lg:pt-44 pb-6 flex-1 flex justify-start items-start flex-col gap-20">
     
@@ -105,7 +120,7 @@
   </div>
 </section>
 
-<section class="flex flex-col md:flex-row justify-center gap-12 w-full mt-16 mb-28">
+<section class="transition-all duration-[1s] loading-fade-in flex flex-col md:flex-row justify-center gap-12 w-full mt-16 mb-28 opacity-0">
   <div class="w-full md:w-1/2">
     <Container>
       <p class="pb-8 text-textDim">My name is Jake Pazzard and I am a student from the UK.</p>
@@ -115,7 +130,7 @@
       <p class="text-accent italic text-sm">Currently looking for a Degree apprenticeship in technology or a junior software development role.</p>
     </Container>
   </div>
-  <div class="flex flex-col w-full md:w-1/2">
+  <div  class="flex flex-col w-full md:w-1/2">
     <h5 class="text-2xl inline-flex gap-2 items-center"><HugeiconsIcon icon={LibraryIcon} className="text-accent" size={30}/> I know</h5>
     <div class="flex-1 flex flex-wrap gap-3">
       {#each data.knownSkills as skill}
@@ -131,7 +146,7 @@
   </div>
 </section>
 
-<section class="flex flex-col gap-12 w-full mb-28 ">
+<section class="transition-all duration-[1s] loading-fade-in flex flex-col gap-12 w-full mb-28 opacity-0">
   <div class="flex justify-between items-center">
     <h3 class="text-3xl font-medium">Timeline</h3>
     <div class="inline-flex gap-2 items-center">
@@ -159,7 +174,7 @@
   </div>
 </section>
 
-<section class="flex flex-col gap-12 w-full mb-28">
+<section class="transition-all duration-[1s] loading-fade-in flex flex-col gap-12 w-full mb-28 opacity-0">
   <h3 class="text-3xl font-medium">Projects</h3>
   <div class="flex flex-col gap-32">
     {#each data.projects as project, index}
@@ -217,3 +232,7 @@
 
   </span>
 {/snippet}
+
+
+<style>
+</style>
