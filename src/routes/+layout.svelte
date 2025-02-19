@@ -69,3 +69,26 @@
 	</footer>
 </main>
 {/key}
+
+<svelte:head>
+	<meta name="keywords" content="Jake Pazzard, Jake Pazzard portfolio, Jake Pazzard work, Jake Pazzard contact">
+	
+	<script type='application/ld+json'>
+		{
+			"@context": "http://www.schema.org",
+			"@type": "WebSite",
+			"name": "Jake Pazzard Portfolio",
+			"url": "https://www.jakepazzard.dev/"
+		}
+	</script>
+
+	<!-- Social sharing -->
+	<meta property="og:title" content="Jake Pazzard Portfolio">
+	<meta property="og:description" content="Check out the portfolio of Jake Pazzard.">
+	<meta property="og:image" content="/shareImg.png">
+	<meta property="og:url" content="https://www.jakepazzard.dev/">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Jake Pazzard Portfolio">
+	<meta name="twitter:description" content="Check out the portfolio of Jake Pazzard.">
+	<meta name="twitter:image" content="/shareImg.png">
+</svelte:head>

@@ -10,6 +10,7 @@
 	import { openLink } from "$lib/functions/openLink";
 	import { onMount } from "svelte";
 	import { fly } from "svelte/transition";
+	import Seo from "$lib/components/Seo.svelte";
 
   let { data } = $props();
   let showCopyConfirmation = $state(false)
@@ -98,6 +99,8 @@
 
 
 </script>
+
+<Seo title="Jake Pazzard - Portfolio"  description="Portfolio describing the experience, skills and previous projects of Jake Pazzard, a student software engineer as well as contact information for Jake Pazzard. This page also provides notes/blogs related to projects listed on the site."/>
 
 <section class="transition-all duration-[1s] loading-fade-in h-[calc(100dvh-4rem)] w-full pt-6 flex flex-col gap-4 opacity-0">
 
