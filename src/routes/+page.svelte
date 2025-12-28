@@ -126,21 +126,20 @@
 <section class="transition-all duration-[1s] loading-fade-in flex flex-col md:flex-row justify-center gap-12 w-full mt-16 mb-28 opacity-0">
   <div class="w-full md:w-1/2">
     <Container>
-      <p class="pb-8 text-textDim">My name is Jake Pazzard and I am a student from the UK.</p>
-      <p class="pb-4 text-textDim">I find myself curious in any technology I can get my digital hands on and enjoy creating solutions that solve people&apos;s problems while utilising modern tools available to us.</p>
-      <p class="pb-4 text-textDim">I'm currently studying the <a target="_blank" href="https://qualifications.pearson.com/en/qualifications/t-levels/digital-production-design-and-development.html#%2Ftab-September2023">Digital Production, Design and Development T-Level</a> where I learn more about the core concepts within the digital sector and gain skills in full stack web development. </p>
-      <p class="pb-8 text-textDim">When I am not developing you can find me growing my fascination with aviation {@render planeIcon()} or exploring a sandbox game.</p>
-      <p class="text-accent italic text-sm">Currently looking for a Degree apprenticeship in technology or a junior software development role.</p>
+      <p class="pb-8 text-textDim">My name is Jake Pazzard and I am a junior web developer from the UK.</p>
+      <p class="pb-8 text-textDim">I am curious to learn about any technology I can get my digital hands on and I enjoy creating solutions that solve businesses&apos; and people&apos;s problems.</p>
+      <p class="pb-8 text-textDim">When I am not developing, you can find me growing my fascination with aviation {@render planeIcon()} or exploring a sandbox game.</p>
+      <!-- <p class="text-accent italic text-sm">Currently looking for a Degree apprenticeship in technology or a junior software development role.</p> -->
     </Container>
   </div>
   <div  class="flex flex-col w-full md:w-1/2">
-    <h5 class="text-2xl inline-flex gap-2 items-center"><HugeiconsIcon icon={LibraryIcon} className="text-accent" size={30}/> I know</h5>
+    <h5 class="text-2xl mb-2 inline-flex gap-2 items-center"><HugeiconsIcon icon={LibraryIcon} className="text-accent" size={30}/> I know</h5>
     <div class="flex-1 flex flex-wrap gap-3">
       {#each data.knownSkills as skill}
         <Skill {skill} />
       {/each}
     </div>
-    <h5 class="text-2xl inline-flex gap-2 items-center"><HugeiconsIcon icon={Mortarboard02Icon} className="text-accent" size={30}/> I&apos;m Learning</h5>
+    <h5 class="text-2xl mt-4 mb-2 inline-flex gap-2 items-center"><HugeiconsIcon icon={Mortarboard02Icon} className="text-accent" size={30}/> I&apos;m Learning</h5>
     <div class="flex-1 flex flex-wrap gap-3">
       {#each data.learningSkills as skill}
         <Skill {skill} />
