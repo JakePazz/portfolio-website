@@ -1,79 +1,37 @@
-import { MongoClient } from "mongodb";
 import type { PageServerLoad } from "./$types";
-import { MONGODB_URI } from "$env/static/private"
 import type { Tinformation } from "$lib/types/information";
-import type { Texperience } from "$lib/types/experience";
-import type { Tskill } from "$lib/types/skill";
-import type { Tproject } from "$lib/types/project";
 import { error } from "@sveltejs/kit";
+import { fetchAPI } from "$lib/server/api";
+import type { TexperiencesResponse, TProjectsResponse, TSkillsResponse } from "$lib/types/api";
 
 
 export const load: PageServerLoad = async () => {
 
-  const mongo = new MongoClient(MONGODB_URI)
-  const db = mongo.db("portfolio")
-
-  if (!db) {
-    error(500, { message: "portfolio database not found" })
-  }
-
-  // Get personalInformation
-  const informationCollection = db.collection<Tinformation>("information")
-  const information = await informationCollection.findOne({}, {
-    projection: {
-      _id: 0, // Removes _id from return object
-    }
-  })
-
+  const information: Tinformation | undefined = await fetchAPI("/information")
   if (!information) {
-    error(500, { message: "No information found from DB" })
+    error(500, { message: "Information cannot be retrieved from API" })
   }
 
-  // Get experiences
-  const experiencesCollection = db.collection<Texperience>("experiences")
-  const experiences = await experiencesCollection.find({}, {
-    projection: {
-      _id: 0,
-    }
-  }).toArray()
-
+  const experiences: TexperiencesResponse | undefined = await fetchAPI("/experiences")
   if (!experiences) {
-    error(500, { message: "No experiences found from DB" })
+    error(500, { message: "Experiences cannot be retrieved from API" })
   }
 
-  // Get skills
-  const skillsCollection = db.collection<Tskill>("skills")
-  const skills = await skillsCollection.find({}, {
-    projection: {
-      _id: 0,
-    }
-  }).toArray()
-  
+  const skills: TSkillsResponse | undefined = await fetchAPI("/skills")
   if (!skills) {
-    error(500, { message: "No skills found from DB" })
+    error(500, { message: "Skills cannot be retrieved from API" })
   }
 
-  // Divide skills to known and learning
-  const knownSkills = skills.filter((skill) => skill["type"] === "known")
-  const learningSkills = skills.filter((skill) => skill["type"] === "learning")
-
-  // Get projects
-  const projectsCollection = db.collection<Tproject>("projects")
-  const projects = await projectsCollection.find({}, {
-    projection: {
-      _id: 0,
-    }
-  }).toArray()
-
+  const projects: TProjectsResponse | undefined = await fetchAPI("/projects")
   if (!projects) {
-    error(500, { message: "No projects found from DB" })
+    error(500, { message: "Projects cannot be retrieved from API" })
   }
 
   return {
     information,
-    experiences,
-    knownSkills,
-    learningSkills,
-    projects,
+    experiences: experiences.experiences,
+    knownSkills: skills.known,
+    learningSkills: skills.learning,
+    projects: projects.projects,
   }
 }

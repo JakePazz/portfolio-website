@@ -4,7 +4,7 @@
 	import Container from "../Container.svelte";
 	import { formatDate } from "$lib/functions/formatDate";
 	import Button from "../Button.svelte";
-	import { ArrowLeft01Icon, ArrowRight01Icon, BookBookmark01Icon, ComputerIcon, CursorInWindowIcon, CursorPointer01Icon, EarthIcon, Github01Icon, Globe02Icon, GlobeFreeIcons, GloveFreeIcons, InternetAntenna01FreeIcons, InternetAntenna01Icon, InternetIcon, Notebook01Icon, Notebook02Icon, NotebookIcon } from "@hugeicons/core-free-icons";
+	import { ArrowLeft01Icon, ArrowRight01Icon, BookBookmark01Icon, ComputerIcon, Github01Icon, Globe02Icon, GlobeFreeIcons, GloveFreeIcons, InternetAntenna01FreeIcons, InternetAntenna01Icon, InternetIcon, Notebook01Icon, Notebook02Icon, NotebookIcon } from "@hugeicons/core-free-icons";
 	import { fly } from "svelte/transition";
 	import { openLink } from "$lib/functions/openLink";
 	import type { Tskill } from "$lib/types/skill";
@@ -39,7 +39,7 @@
     } else {
       translate = ""
     }
-    expanded ? expanded = false : expanded = true
+    expanded = !expanded
   }
 
 </script>
@@ -120,7 +120,7 @@
       <div class="flex flex-wrap gap-2">
         {#each project.skills as projectSkill}
           {#if skills.find((skill) => skill.id === projectSkill)}
-            <Skill skill={skills.find((skill) => skill.id === projectSkill)!!} />
+            <Skill skill={skills.find((skill) => skill.id === projectSkill)!} />
           {/if}
         {/each}
       </div>
